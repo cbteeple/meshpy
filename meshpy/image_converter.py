@@ -16,7 +16,7 @@ from skimage.transform import resize
 
 from autolab_core import RigidTransform
 from meshpy import Mesh3D
-#from perception import BinaryImage
+from perception import BinaryImage
 
 class ImageToMeshConverter:
     """ Namespace class for converting binary images to SDFs and meshes. """
@@ -46,8 +46,8 @@ class ImageToMeshConverter:
             if the triangulation was not successful due to topology or other factors
         """
         # check valid input
-        #if not isinstance(binary_im, BinaryImage):
-        #    raise ValueError('Must provide perception.BinaryImage as input')
+        if not isinstance(binary_im, BinaryImage):
+            raise ValueError('Must provide perception.BinaryImage as input')
 
         # get occupied indices from binary image
         binary_data = binary_im.data
