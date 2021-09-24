@@ -3,7 +3,7 @@ File for loading and saving meshes from .OBJ files
 Author: Jeff Mahler
 """
 import os
-import mesh
+from . import mesh
 
 class ObjFile(object):
     """
@@ -67,13 +67,13 @@ class ObjFile(object):
                 # Look for obj tags (see http://en.wikipedia.org/wiki/Wavefront_.obj_file)
                 if vals[0] == 'v':
                     # Add vertex
-                    v = map(float, vals[1:4])
+                    v = list(map(float, vals[1:4]))
                     verts.append(v)
                 if vals[0] == 'vn':
                     # Add normal
                     if norms is None:
                         norms = []
-                    n = map(float, vals[1:4])
+                    n = list(map(float, vals[1:4]))
                     norms.append(n)  
                 if vals[0] == 'f':
                     # Add faces (includes vertex indices, texture coordinates, and normals)
@@ -81,7 +81,7 @@ class ObjFile(object):
                     vti = []
                     nti = []
                     if vals[1].find('/') == -1:
-                        vi = map(int, vals[1:])
+                        vi = list(map(int, vals[1:]))
                         vi = [i - 1 for i in vi]
                     else:
                         for j in range(1, len(vals)):

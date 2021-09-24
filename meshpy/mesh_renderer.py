@@ -328,7 +328,7 @@ class PlanarWorksurfaceDiscretizer(object):
                                 camera_y_par_obj = np.cross(camera_z_obj, camera_x_par_obj)
                                 camera_y_par_obj = camera_y_par_obj / np.linalg.norm(camera_y_par_obj)
                                 if camera_y_par_obj[2] > 0:
-                                    print 'Flipping', num_poses
+                                    print ('Flipping', num_poses)
                                     camera_x_par_obj = -camera_x_par_obj
                                     camera_y_par_obj = np.cross(camera_z_obj, camera_x_par_obj)
                                     camera_y_par_obj = camera_y_par_obj / np.linalg.norm(camera_y_par_obj)

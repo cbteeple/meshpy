@@ -3,7 +3,7 @@ File for loading and saving meshes from .OFF files
 Author: Jeff Mahler
 """
 import os
-import mesh
+from . import mesh
 
 class OffFile:
     """

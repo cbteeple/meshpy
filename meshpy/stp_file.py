@@ -11,8 +11,8 @@ Authors: Nikhil Sharma and Matt Matl
 import os
 import numpy as np
 
-import mesh
-import stable_pose as sp
+from . import mesh
+from . import stable_pose as sp
 
 class StablePoseFile:
     """

@@ -3,7 +3,7 @@ Encapsulates mesh for grasping operations
 Authors: Jeff Mahler and Matt Matl
 """
 import math
-import Queue
+import queue
 import os
 import random
 from subprocess import Popen
@@ -16,8 +16,8 @@ import trimesh as tm
 
 from autolab_core import RigidTransform, Point, Direction, PointCloud, NormalCloud
 
-import obj_file
-import stable_pose as sp
+from . import obj_file
+from . import stable_pose as sp
 
 class Mesh3D(object):
     """A triangular mesh for a three-dimensional shape representation.
@@ -694,7 +694,7 @@ class Mesh3D(object):
         old_triangles = self.triangles.tolist()
 
         new_triangles = []
-        tri_queue = Queue.Queue()
+        tri_queue = queue.Queue()
 
         for j, triangle in enumerate(old_triangles):
             tri_queue.put((j, triangle))
@@ -1833,7 +1833,7 @@ class Mesh3D(object):
         :obj:`list` of :obj:`_Segments`
             The list of line segments that were closest to the input point.
         """
-        min_dist = sys.maxint
+        min_dist = float("inf")
         min_segs = []
         distances = []
         segments = []
